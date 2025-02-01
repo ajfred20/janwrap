@@ -1,10 +1,12 @@
+@import url("https://fonts.cdnfonts.com/css/satoshi");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
+  --accent: #8b7355;
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #1a1a1a;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -17,5 +19,10 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Satoshi", sans-serif;
+}
+
+/* Optional: Add smooth scrolling */
+html {
+  scroll-behavior: smooth;
 }
