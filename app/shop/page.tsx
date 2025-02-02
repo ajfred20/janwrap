@@ -20,6 +20,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import { useCart } from "@/contexts/cart-context";
 
 const products = [
   {
@@ -223,6 +224,7 @@ export default function Shop() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<string | null>(null);
   const router = useRouter();
+  const { addItem } = useCart();
 
   const filteredAndSortedProducts = useMemo(() => {
     let filtered = [...products];
@@ -256,15 +258,20 @@ export default function Shop() {
     return filtered;
   }, [selectedCategory, selectedSort, priceRange]);
 
-  const handleAddToCart = (productId: string) => {
-    setSelectedProduct(productId);
-    setAddedToCart((prev) => ({ ...prev, [productId]: true }));
+  const handleAddToCart = (product: (typeof products)[0]) => {
+    setSelectedProduct(product.name);
+    setAddedToCart((prev) => ({ ...prev, [product.name]: true }));
     setIsDialogOpen(true);
+    addItem({
+      name: product.name,
+      price: product.price,
+      image: product.image,
+      category: product.category,
+    });
     toast.success("Added to cart");
 
-    // Reset the button after 2 seconds
     setTimeout(() => {
-      setAddedToCart((prev) => ({ ...prev, [productId]: false }));
+      setAddedToCart((prev) => ({ ...prev, [product.name]: false }));
     }, 2000);
   };
 
@@ -397,7 +404,7 @@ export default function Shop() {
                   </div>
                 )}
                 <button
-                  onClick={() => handleAddToCart(product.name)}
+                  onClick={() => handleAddToCart(product)}
                   className="absolute bottom-4 left-4 w-10 h-10 rounded-full bg-white/90 text-neutral-600 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-[#8B7355] hover:text-white"
                 >
                   <svg

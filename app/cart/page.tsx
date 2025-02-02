@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useCart } from "@/contexts/cart-context";
 
 type CartItem = {
   name: string;
@@ -34,20 +35,9 @@ const initialCartItems: CartItem[] = [
 
 export default function Cart() {
   const router = useRouter();
-  const [cartItems, setCartItems] = useState<CartItem[]>(initialCartItems);
+  const { items, removeItem, updateQuantity } = useCart();
 
-  const updateQuantity = (index: number, newQuantity: number) => {
-    if (newQuantity < 1) return;
-    const newCartItems = [...cartItems];
-    newCartItems[index].quantity = newQuantity;
-    setCartItems(newCartItems);
-  };
-
-  const removeItem = (index: number) => {
-    setCartItems(cartItems.filter((_, i) => i !== index));
-  };
-
-  const subtotal = cartItems.reduce(
+  const subtotal = items.reduce(
     (acc, item) => acc + item.price * item.quantity,
     0
   );
@@ -61,7 +51,7 @@ export default function Cart() {
           Shopping Cart
         </h1>
 
-        {cartItems.length === 0 ? (
+        {items.length === 0 ? (
           <div className="text-center py-12">
             <h2 className="text-2xl font-light text-neutral-800 mb-4">
               Your cart is empty
@@ -81,7 +71,7 @@ export default function Cart() {
             {/* Cart Items */}
             <div className="lg:col-span-8">
               <div className="space-y-8">
-                {cartItems.map((item, index) => (
+                {items.map((item, index) => (
                   <div
                     key={index}
                     className="flex gap-6 pb-8 border-b border-neutral-200"
@@ -105,7 +95,7 @@ export default function Cart() {
                           </p>
                         </div>
                         <button
-                          onClick={() => removeItem(index)}
+                          onClick={() => removeItem(item.name)}
                           className="text-neutral-400 hover:text-neutral-600"
                         >
                           <span className="sr-only">Remove item</span>
@@ -128,7 +118,7 @@ export default function Cart() {
                         <div className="flex items-center gap-2">
                           <button
                             onClick={() =>
-                              updateQuantity(index, item.quantity - 1)
+                              updateQuantity(item.name, item.quantity - 1)
                             }
                             className="w-8 h-8 rounded-full border border-neutral-200 flex items-center justify-center text-neutral-600 hover:border-neutral-300"
                           >
@@ -139,7 +129,7 @@ export default function Cart() {
                           </span>
                           <button
                             onClick={() =>
-                              updateQuantity(index, item.quantity + 1)
+                              updateQuantity(item.name, item.quantity + 1)
                             }
                             className="w-8 h-8 rounded-full border border-neutral-200 flex items-center justify-center text-neutral-600 hover:border-neutral-300"
                           >

@@ -3,6 +3,7 @@ import { Navigation } from "@/components/navigation";
 import Footer from "@/components/footer";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
+import { CartProvider } from "@/contexts/cart-context";
 
 export const metadata: Metadata = {
   title: "Maison - Luxury Home Furnishings",
@@ -18,10 +19,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Navigation />
-        {children}
-        <Footer />
-        <Toaster position="top-right" />
+        <CartProvider>
+          <Navigation />
+          {children}
+          <Footer />
+          <Toaster position="top-right" />
+        </CartProvider>
       </body>
     </html>
   );
