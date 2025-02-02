@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Navigation } from "@/components/navigation";
 import Footer from "@/components/footer";
 import "./globals.css";
+import { Toaster } from "react-hot-toast";
 
 export const metadata: Metadata = {
   title: "Maison - Luxury Home Furnishings",
@@ -20,6 +21,7 @@ export default function RootLayout({
         <Navigation />
         {children}
         <Footer />
+        <Toaster position="top-right" />
       </body>
     </html>
   );

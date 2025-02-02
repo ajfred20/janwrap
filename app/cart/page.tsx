@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 type CartItem = {
   name: string;
@@ -32,6 +33,7 @@ const initialCartItems: CartItem[] = [
 ];
 
 export default function Cart() {
+  const router = useRouter();
   const [cartItems, setCartItems] = useState<CartItem[]>(initialCartItems);
 
   const updateQuantity = (index: number, newQuantity: number) => {
@@ -67,12 +69,12 @@ export default function Cart() {
             <p className="text-neutral-600 mb-8">
               Looks like you haven't added any items to your cart yet.
             </p>
-            <Link
-              href="/shop"
-              className="inline-block bg-[#8B7355] text-white px-8 py-4 rounded-full hover:bg-[#7A6548] transition-colors"
+            <button
+              onClick={() => router.push("/shop")}
+              className="bg-[#8B7355] text-white px-8 py-4 rounded-full hover:bg-[#7A6548] transition-colors"
             >
               Continue Shopping
-            </Link>
+            </button>
           </div>
         ) : (
           <div className="grid lg:grid-cols-12 gap-8">
@@ -106,6 +108,7 @@ export default function Cart() {
                           onClick={() => removeItem(index)}
                           className="text-neutral-400 hover:text-neutral-600"
                         >
+                          <span className="sr-only">Remove item</span>
                           <svg
                             className="w-5 h-5"
                             fill="none"
@@ -177,7 +180,10 @@ export default function Cart() {
                     </div>
                   </div>
                 </div>
-                <button className="w-full bg-[#8B7355] text-white px-8 py-4 rounded-full hover:bg-[#7A6548] transition-colors">
+                <button
+                  onClick={() => router.push("/checkout")}
+                  className="w-full bg-[#8B7355] text-white px-8 py-4 rounded-full hover:bg-[#7A6548] transition-colors"
+                >
                   Proceed to Checkout
                 </button>
                 <p className="text-center text-sm text-neutral-500 mt-4">

@@ -10,6 +10,16 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Slider } from "@/components/ui/slider";
+import { useRouter } from "next/navigation";
+import { toast } from "react-hot-toast";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 const products = [
   {
@@ -207,6 +217,12 @@ export default function Shop() {
   const [selectedSort, setSelectedSort] = useState("Featured");
   const [priceRange, setPriceRange] = useState([0]);
   const [isFiltersOpen, setIsFiltersOpen] = useState(false);
+  const [addedToCart, setAddedToCart] = useState<{ [key: string]: boolean }>(
+    {}
+  );
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState<string | null>(null);
+  const router = useRouter();
 
   const filteredAndSortedProducts = useMemo(() => {
     let filtered = [...products];
@@ -239,6 +255,26 @@ export default function Shop() {
 
     return filtered;
   }, [selectedCategory, selectedSort, priceRange]);
+
+  const handleAddToCart = (productId: string) => {
+    setSelectedProduct(productId);
+    setAddedToCart((prev) => ({ ...prev, [productId]: true }));
+    setIsDialogOpen(true);
+    toast.success("Added to cart");
+
+    // Reset the button after 2 seconds
+    setTimeout(() => {
+      setAddedToCart((prev) => ({ ...prev, [productId]: false }));
+    }, 2000);
+  };
+
+  const handleContinueShopping = () => {
+    setIsDialogOpen(false);
+  };
+
+  const handleProceedToCheckout = () => {
+    router.push("/cart");
+  };
 
   return (
     <main className="bg-white pt-32">
@@ -360,9 +396,12 @@ export default function Shop() {
                     New
                   </div>
                 )}
-                <button className="absolute bottom-4 right-4 bg-white/90 backdrop-blur-sm p-3 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
+                <button
+                  onClick={() => handleAddToCart(product.name)}
+                  className="absolute bottom-4 left-4 w-10 h-10 rounded-full bg-white/90 text-neutral-600 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-[#8B7355] hover:text-white"
+                >
                   <svg
-                    className="w-5 h-5 text-neutral-800"
+                    className="w-5 h-5"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -408,6 +447,34 @@ export default function Shop() {
           ))}
         </div>
       </div>
+
+      {/* Add to Cart Dialog */}
+      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+        <DialogContent className="w-[90vw] max-w-md mx-auto p-4 sm:p-6 rounded-lg">
+          <DialogHeader className="space-y-2 sm:space-y-3">
+            <DialogTitle className="text-lg sm:text-xl text-neutral-800">
+              Item Added to Cart
+            </DialogTitle>
+            <DialogDescription className="text-sm sm:text-base text-neutral-600">
+              Would you like to proceed to checkout or continue shopping?
+            </DialogDescription>
+          </DialogHeader>
+          <DialogFooter className="flex flex-col sm:flex-row gap-2 sm:gap-3 mt-4 sm:mt-6">
+            <button
+              onClick={handleContinueShopping}
+              className="w-full sm:flex-1 px-4 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base rounded-full border border-neutral-200 text-neutral-800 hover:bg-neutral-50 transition-colors"
+            >
+              Continue Shopping
+            </button>
+            <button
+              onClick={handleProceedToCheckout}
+              className="w-full sm:flex-1 px-4 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base rounded-full bg-[#8B7355] text-white hover:bg-[#7A6548] transition-colors"
+            >
+              Proceed to Checkout
+            </button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </main>
   );
 }

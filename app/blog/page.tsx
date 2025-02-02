@@ -151,13 +151,13 @@ export default function Blog() {
             Get the latest articles, design tips, and behind-the-scenes stories
             delivered to your inbox.
           </p>
-          <form className="flex gap-4 max-w-md mx-auto">
+          <form className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
             <input
               type="email"
               placeholder="Enter your email"
-              className="flex-1 px-6 py-4 rounded-full border border-neutral-200 focus:outline-none focus:border-[#8B7355]"
+              className="flex-1 px-6 py-4 rounded-full border text-neutral-600 border-neutral-200 focus:outline-none focus:border-[#8B7355]"
             />
-            <button className="bg-[#8B7355] text-white px-8 py-4 rounded-full hover:bg-[#7A6548] transition-colors">
+            <button className="w-full sm:w-auto bg-[#8B7355] text-white px-8 py-4 rounded-full hover:bg-[#7A6548] transition-colors">
               Subscribe
             </button>
           </form>
