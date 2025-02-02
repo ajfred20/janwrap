@@ -22,7 +22,7 @@ const featuredProducts = [
     name: "Wooden Coffee Table",
     price: "$499",
     image:
-      "https://images.unsplash.com/photo-1532372320978-9b6d003b5b4d?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1533090481720-856c6e3c1fdc?auto=format&fit=crop&w=800&q=80",
     category: "Furniture",
   },
   {
