@@ -1,9 +1,11 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
 
 export function Navigation() {
   const pathname = usePathname();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const isActive = (path: string) => {
     return pathname === path;
@@ -86,8 +88,68 @@ export function Navigation() {
                 />
               </svg>
             </Link>
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="md:hidden text-neutral-600 hover:text-[#8B7355] transition-colors"
+            >
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={1.5}
+                  d={
+                    isMenuOpen
+                      ? "M6 18L18 6M6 6l12 12"
+                      : "M4 6h16M4 12h16M4 18h16"
+                  }
+                />
+              </svg>
+            </button>
           </div>
         </div>
+
+        {/* Mobile Menu */}
+        {isMenuOpen && (
+          <div className="md:hidden py-4 space-y-4">
+            <Link
+              href="/shop"
+              className={`block hover:text-[#8B7355] transition-colors ${
+                isActive("/shop") ? "text-[#8B7355]" : "text-neutral-600"
+              }`}
+            >
+              Shop
+            </Link>
+            <Link
+              href="/collections"
+              className={`block hover:text-[#8B7355] transition-colors ${
+                isActive("/collections") ? "text-[#8B7355]" : "text-neutral-600"
+              }`}
+            >
+              Collections
+            </Link>
+            <Link
+              href="/about"
+              className={`block hover:text-[#8B7355] transition-colors ${
+                isActive("/about") ? "text-[#8B7355]" : "text-neutral-600"
+              }`}
+            >
+              About
+            </Link>
+            <Link
+              href="/contact"
+              className={`block hover:text-[#8B7355] transition-colors ${
+                isActive("/contact") ? "text-[#8B7355]" : "text-neutral-600"
+              }`}
+            >
+              Contact
+            </Link>
+          </div>
+        )}
       </div>
     </nav>
   );

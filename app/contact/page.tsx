@@ -12,8 +12,9 @@ export default function Contact() {
               Get in Touch
             </h1>
             <p className="text-neutral-600 mb-8">
-              Have a question or feedback? We'd love to hear from you. Fill out
-              the form below and we'll get back to you as soon as possible.
+              Have a question or feedback? We&apos;d love to hear from you. Fill
+              out the form below and we&apos;ll get back to you as soon as
+              possible.
             </p>
 
             <div className="space-y-6 mb-12">

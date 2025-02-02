@@ -67,13 +67,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Categories Grid */}
-      <section className="py-20 bg-[#FAF7F2]">
-        <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-3xl font-light text-neutral-800 mb-12">
+      {/* Categories Grid - Improved mobile layout */}
+      <section className="py-12 md:py-20 bg-[#FAF7F2]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <h2 className="text-2xl md:text-3xl font-light text-neutral-800 mb-8 md:mb-12 text-center lg:text-left">
             Shop by Category
           </h2>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
             {categories.map((category) => (
               <div
                 key={category.name}
@@ -86,9 +86,13 @@ export default function Home() {
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors" />
-                <div className="absolute bottom-6 left-6 text-white">
-                  <h3 className="text-2xl font-medium mb-1">{category.name}</h3>
-                  <p className="text-white/80">{category.count}</p>
+                <div className="absolute bottom-4 md:bottom-6 left-4 md:left-6 text-white">
+                  <h3 className="text-xl md:text-2xl font-medium mb-1">
+                    {category.name}
+                  </h3>
+                  <p className="text-sm md:text-base text-white/80">
+                    {category.count}
+                  </p>
                 </div>
               </div>
             ))}
@@ -96,16 +100,16 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Featured Products */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-3xl font-light text-neutral-800 mb-12">
+      {/* Featured Products - Better mobile grid */}
+      <section className="py-12 md:py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <h2 className="text-2xl md:text-3xl font-light text-neutral-800 mb-8 md:mb-12 text-center lg:text-left">
             Featured Products
           </h2>
-          <div className="grid md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8">
             {featuredProducts.map((product) => (
               <div key={product.name} className="group">
-                <div className="relative aspect-square rounded-xl overflow-hidden mb-4">
+                <div className="relative aspect-square rounded-xl overflow-hidden mb-3 md:mb-4">
                   <Image
                     src={product.image}
                     alt={product.name}
@@ -113,24 +117,26 @@ export default function Home() {
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
-                <p className="text-neutral-500 text-sm mb-1">
+                <p className="text-neutral-500 text-xs md:text-sm mb-1">
                   {product.category}
                 </p>
-                <h3 className="text-neutral-800 font-medium mb-2">
+                <h3 className="text-neutral-800 font-medium text-sm md:text-base mb-1 md:mb-2">
                   {product.name}
                 </h3>
-                <p className="text-[#8B7355]">{product.price}</p>
+                <p className="text-[#8B7355] text-sm md:text-base">
+                  {product.price}
+                </p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Design Philosophy Section */}
-      <section className="py-20 bg-[#FAF7F2]">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
+      {/* Design Philosophy - Responsive layout */}
+      <section className="py-12 md:py-20 bg-[#FAF7F2]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
+            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden order-2 lg:order-1">
               <Image
                 src="/design-philosophy.jpg"
                 alt="Our design philosophy"
@@ -138,31 +144,32 @@ export default function Home() {
                 className="object-cover"
               />
             </div>
-            <div className="space-y-6">
-              <h2 className="text-3xl font-light text-neutral-800">
+            <div className="space-y-4 md:space-y-6 text-center lg:text-left order-1 lg:order-2">
+              <h2 className="text-2xl md:text-3xl font-light text-neutral-800">
                 Our Design Philosophy
               </h2>
               <p className="text-neutral-600 leading-relaxed">
                 We believe in creating spaces that tell your story. Each piece
                 in our collection is thoughtfully crafted to bring both function
-                and beauty to your home, creating an environment that's uniquely
-                yours.
+                and beauty to your home, creating an environment that&apos;s
+                uniquely yours.
               </p>
-              <button className="text-[#8B7355] font-medium hover:text-[#7A6548] transition-colors">
-                Learn More →
+              <button className="text-[#8B7355] font-medium hover:text-[#7A6548] transition-colors inline-flex items-center gap-2">
+                Learn More
+                <span className="text-lg">→</span>
               </button>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Instagram Feed Section */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-3xl font-light text-neutral-800 mb-12">
+      {/* Instagram Feed - Responsive grid */}
+      <section className="py-12 md:py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <h2 className="text-2xl md:text-3xl font-light text-neutral-800 mb-8 md:mb-12 text-center lg:text-left">
             @maison on Instagram
           </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
             {Array.from({ length: 4 }).map((_, i) => (
               <div
                 key={i}
@@ -181,20 +188,20 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Customer Reviews Section */}
-      <section className="py-20 bg-[#FAF7F2]">
-        <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-3xl font-light text-neutral-800 mb-12 text-center">
+      {/* Customer Reviews - Mobile friendly */}
+      <section className="py-12 md:py-20 bg-[#FAF7F2]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <h2 className="text-2xl md:text-3xl font-light text-neutral-800 mb-8 md:mb-12 text-center">
             What Our Customers Say
           </h2>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
             {Array.from({ length: 3 }).map((_, i) => (
-              <div key={i} className="bg-white p-8 rounded-xl shadow-sm">
-                <div className="flex gap-2 mb-4">
+              <div key={i} className="bg-white p-6 md:p-8 rounded-xl shadow-sm">
+                <div className="flex gap-1 md:gap-2 mb-4">
                   {Array.from({ length: 5 }).map((_, i) => (
                     <svg
                       key={i}
-                      className="w-5 h-5 text-[#8B7355]"
+                      className="w-4 h-4 md:w-5 md:h-5 text-[#8B7355]"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                     >
@@ -202,14 +209,14 @@ export default function Home() {
                     </svg>
                   ))}
                 </div>
-                <p className="text-neutral-600 mb-6">
-                  "Absolutely love the quality and design of every piece. The
-                  attention to detail is remarkable."
+                <p className="text-neutral-600 text-sm md:text-base mb-4 md:mb-6">
+                  &quot;Absolutely love the quality and design of every piece.
+                  The attention to detail is remarkable.&quot;
                 </p>
-                <div className="text-neutral-800 font-medium">
+                <div className="text-neutral-800 font-medium text-sm md:text-base">
                   Sarah Mitchell
                 </div>
-                <div className="text-neutral-500 text-sm">
+                <div className="text-neutral-500 text-xs md:text-sm">
                   Verified Customer
                 </div>
               </div>
@@ -218,25 +225,25 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Newsletter */}
-      <section className="py-20 bg-[#FAF7F2]">
-        <div className="max-w-2xl mx-auto px-6 text-center">
-          <h2 className="text-3xl font-light text-neutral-800 mb-4">
+      {/* Newsletter - Mobile optimized */}
+      <section className="py-12 md:py-20 bg-[#FAF7F2]">
+        <div className="max-w-2xl mx-auto px-4 sm:px-6 text-center">
+          <h2 className="text-2xl md:text-3xl font-light text-neutral-800 mb-3 md:mb-4">
             Join Our Newsletter
           </h2>
-          <p className="text-neutral-600 mb-8">
+          <p className="text-neutral-600 text-sm md:text-base mb-6 md:mb-8">
             Stay updated with our latest collections and exclusive offers.
           </p>
-          <div className="flex gap-4">
+          <form className="flex flex-col sm:flex-row gap-3 md:gap-4 max-w-md mx-auto">
             <input
               type="email"
               placeholder="Enter your email"
-              className="flex-1 px-6 py-4 rounded-full border border-neutral-200 focus:outline-none focus:border-[#8B7355]"
+              className="flex-1 px-4 md:px-6 py-3 md:py-4 rounded-full border border-neutral-200 focus:outline-none focus:border-[#8B7355]"
             />
-            <button className="bg-[#8B7355] text-white px-8 py-4 rounded-full hover:bg-[#7A6548] transition-colors">
+            <button className="bg-[#8B7355] text-white px-6 md:px-8 py-3 md:py-4 rounded-full hover:bg-[#7A6548] transition-colors">
               Subscribe
             </button>
-          </div>
+          </form>
         </div>
       </section>
     </main>
