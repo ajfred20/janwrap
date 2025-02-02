@@ -225,6 +225,16 @@ export default function Shop() {
   const [selectedProduct, setSelectedProduct] = useState<string | null>(null);
   const router = useRouter();
   const { addItem } = useCart();
+  const [itemsAddedCount, setItemsAddedCount] = useState(0);
+  const [lastDialogShown, setLastDialogShown] = useState(0);
+
+  const shouldShowDialog = (count: number) => {
+    // Show dialog on first item and then every 3 items after continuing shopping
+    return (
+      count === 1 ||
+      (count > lastDialogShown && (count - lastDialogShown) % 3 === 0)
+    );
+  };
 
   const filteredAndSortedProducts = useMemo(() => {
     let filtered = [...products];
@@ -261,7 +271,14 @@ export default function Shop() {
   const handleAddToCart = (product: (typeof products)[0]) => {
     setSelectedProduct(product.name);
     setAddedToCart((prev) => ({ ...prev, [product.name]: true }));
-    setIsDialogOpen(true);
+
+    const newCount = itemsAddedCount + 1;
+    setItemsAddedCount(newCount);
+
+    if (shouldShowDialog(newCount)) {
+      setIsDialogOpen(true);
+    }
+
     addItem({
       name: product.name,
       price: product.price,
@@ -276,6 +293,7 @@ export default function Shop() {
   };
 
   const handleContinueShopping = () => {
+    setLastDialogShown(itemsAddedCount);
     setIsDialogOpen(false);
   };
 

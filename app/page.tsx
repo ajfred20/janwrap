@@ -154,84 +154,89 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Design Philosophy - Responsive layout */}
-      <section className="py-12 md:py-20 bg-[#FAF7F2]">
+      {/* New: Design Philosophy Section */}
+      <section className="py-20 bg-[#FAF7F2]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
-            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden order-2 lg:order-1">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="relative aspect-square rounded-2xl overflow-hidden">
               <Image
-                src="https://images.unsplash.com/photo-1631679706909-1844bbd07221?auto=format&fit=crop&w=1200&q=80"
-                alt="Our design philosophy"
+                src="https://images.unsplash.com/photo-1631679706909-1844bbd07221?auto=format&fit=crop&w=1600&q=80"
+                alt="Interior Design"
                 fill
                 className="object-cover"
               />
             </div>
-            <div className="space-y-4 md:space-y-6 text-center lg:text-left order-1 lg:order-2">
-              <h2 className="text-2xl md:text-3xl font-light text-neutral-800">
+            <div className="lg:pl-8">
+              <h2 className="text-3xl font-light text-neutral-800 mb-6">
                 Our Design Philosophy
               </h2>
-              <p className="text-neutral-600 leading-relaxed">
-                We believe in creating spaces that tell your story. Each piece
-                in our collection is thoughtfully crafted to bring both function
-                and beauty to your home, creating an environment that&apos;s
-                uniquely yours.
+              <p className="text-neutral-600 mb-8">
+                At Maison, we believe in the power of thoughtful design to
+                transform spaces and elevate daily living. Each piece in our
+                collection is carefully curated to blend functionality with
+                timeless elegance.
               </p>
-              <button className="text-[#8B7355] font-medium hover:text-[#7A6548] transition-colors inline-flex items-center gap-2">
-                Learn More
-                <span className="text-lg">→</span>
-              </button>
+              <div className="grid sm:grid-cols-2 gap-8">
+                <div>
+                  <h3 className="text-lg font-medium text-[#8B7355] mb-2">
+                    Sustainable Materials
+                  </h3>
+                  <p className="text-neutral-600">
+                    Responsibly sourced materials that respect both nature and
+                    craftsmanship.
+                  </p>
+                </div>
+                <div>
+                  <h3 className="text-lg font-medium text-[#8B7355] mb-2">
+                    Timeless Design
+                  </h3>
+                  <p className="text-neutral-600">
+                    Pieces that transcend trends and remain beautiful for
+                    generations.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Instagram Feed - Responsive grid */}
-      <section className="py-12 md:py-20">
+      {/* New: Customer Reviews Section */}
+      <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <h2 className="text-2xl md:text-3xl font-light text-neutral-800 mb-8 md:mb-12 text-center lg:text-left">
-            @maison on Instagram
-          </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
-            {Array.from({ length: 4 }).map((_, i) => {
-              const images = [
-                "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80",
-                "https://images.unsplash.com/photo-1594026112284-02bb6f3352fe?auto=format&fit=crop&w=800&q=80",
-                "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=format&fit=crop&w=800&q=80",
-                "https://images.unsplash.com/photo-1616137466211-f939a420be84?auto=format&fit=crop&w=800&q=80",
-              ];
-              return (
-                <div
-                  key={i}
-                  className="relative aspect-square rounded-xl overflow-hidden group cursor-pointer"
-                >
-                  <Image
-                    src={images[i]}
-                    alt={`Instagram post ${i + 1}`}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors" />
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Customer Reviews - Mobile friendly */}
-      <section className="py-12 md:py-20 bg-[#FAF7F2]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <h2 className="text-2xl md:text-3xl font-light text-neutral-800 mb-8 md:mb-12 text-center">
+          <h2 className="text-3xl font-light text-neutral-800 text-center mb-12">
             What Our Customers Say
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-            {Array.from({ length: 3 }).map((_, i) => (
-              <div key={i} className="bg-white p-6 md:p-8 rounded-xl shadow-sm">
-                <div className="flex gap-1 md:gap-2 mb-4">
-                  {Array.from({ length: 5 }).map((_, i) => (
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                text: "The quality of their furniture is exceptional. My leather accent chair is both beautiful and comfortable.",
+                author: "Sarah M.",
+                role: "Interior Designer",
+                rating: 5,
+              },
+              {
+                text: "Maison's attention to detail and customer service exceeded my expectations. A truly luxurious experience.",
+                author: "James P.",
+                role: "Homeowner",
+                rating: 5,
+              },
+              {
+                text: "Their sustainable practices and timeless designs make every purchase feel like an investment in the future.",
+                author: "Emily R.",
+                role: "Architect",
+                rating: 5,
+              },
+            ].map((review, index) => (
+              <div
+                key={index}
+                className="bg-white p-8 rounded-2xl border border-neutral-200"
+              >
+                <div className="flex text-[#8B7355] mb-4">
+                  {Array.from({ length: review.rating }).map((_, i) => (
                     <svg
                       key={i}
-                      className="w-4 h-4 md:w-5 md:h-5 text-[#8B7355]"
+                      className="w-5 h-5"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                     >
@@ -239,18 +244,84 @@ export default function Home() {
                     </svg>
                   ))}
                 </div>
-                <p className="text-neutral-600 text-sm md:text-base mb-4 md:mb-6">
-                  &quot;Absolutely love the quality and design of every piece.
-                  The attention to detail is remarkable.&quot;
-                </p>
-                <div className="text-neutral-800 font-medium text-sm md:text-base">
-                  Sarah Mitchell
-                </div>
-                <div className="text-neutral-500 text-xs md:text-sm">
-                  Verified Customer
+                <p className="text-neutral-600 mb-6">{review.text}</p>
+                <div>
+                  <p className="font-medium text-neutral-800">
+                    {review.author}
+                  </p>
+                  <p className="text-sm text-neutral-500">{review.role}</p>
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* New: Design Services Section */}
+      <section className="py-20 bg-neutral-900 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl font-light mb-6">
+                Professional Design Services
+              </h2>
+              <p className="text-neutral-300 mb-8">
+                Transform your space with our expert design consultation
+                services. Our team of experienced interior designers will help
+                you create a home that reflects your style and meets your needs.
+              </p>
+              <div className="space-y-4">
+                <div className="flex items-start gap-4">
+                  <div className="w-8 h-8 rounded-full bg-[#8B7355] flex items-center justify-center flex-shrink-0">
+                    <svg
+                      className="w-4 h-4"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="font-medium mb-2">Personal Consultation</h3>
+                    <p className="text-neutral-400">
+                      One-on-one sessions with our expert designers
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-4">
+                  <div className="w-8 h-8 rounded-full bg-[#8B7355] flex items-center justify-center flex-shrink-0">
+                    <svg
+                      className="w-4 h-4"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M4.649 3.084A1 1 0 015.163 4.4 13.95 13.95 0 004 10c0 1.993.416 3.886 1.164 5.6a1 1 0 01-1.832.8A15.95 15.95 0 012 10c0-2.274.475-4.44 1.332-6.4a1 1 0 011.317-.516zM12.96 7a3 3 0 00-2.342 1.126l-.328.41-.111-.279A2 2 0 008.323 7H8a1 1 0 000 2h.323l.532 1.33-1.035 1.295a1 1 0 01-.781.375H7a1 1 0 100 2h.039a3 3 0 002.342-1.126l.328-.41.111.279A2 2 0 0011.677 14H12a1 1 0 100-2h-.323l-.532-1.33 1.035-1.295A1 1 0 0112.961 9H13a1 1 0 100-2h-.039zm1.874-2.6a1 1 0 011.833-.8A15.95 15.95 0 0118 10c0 2.274-.475 4.44-1.332 6.4a1 1 0 11-1.832-.8A13.949 13.949 0 0016 10c0-1.993-.416-3.886-1.164-5.6z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="font-medium mb-2">Custom Solutions</h3>
+                    <p className="text-neutral-400">
+                      Tailored design plans for your unique space
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <button className="mt-8 px-8 py-4 bg-[#8B7355] text-white rounded-full hover:bg-[#7A6548] transition-colors">
+                Book a Consultation
+              </button>
+            </div>
+            <div className="relative aspect-square rounded-2xl overflow-hidden">
+              <Image
+                src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1600&q=80"
+                alt="Interior Design Service"
+                fill
+                className="object-cover"
+              />
+            </div>
           </div>
         </div>
       </section>

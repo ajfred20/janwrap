@@ -2,10 +2,12 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { SearchDialog } from "@/components/search-dialog";
 
 export function Navigation() {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   const isActive = (path: string) => {
     return pathname === path;
@@ -55,7 +57,10 @@ export function Navigation() {
           </div>
 
           <div className="flex items-center gap-6">
-            <button className="text-neutral-600 hover:text-[#8B7355] transition-colors">
+            <button
+              onClick={() => setIsSearchOpen(true)}
+              className="text-neutral-600 hover:text-[#8B7355] transition-colors"
+            >
               <svg
                 className="w-6 h-6"
                 fill="none"
@@ -150,6 +155,11 @@ export function Navigation() {
             </Link>
           </div>
         )}
+
+        <SearchDialog
+          isOpen={isSearchOpen}
+          onOpenChangeAction={setIsSearchOpen}
+        />
       </div>
     </nav>
   );
