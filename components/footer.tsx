@@ -1,28 +1,30 @@
 "use client";
 
+import React from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
 
-const footerLinks = [
-  {
-    title: "Shop",
-    links: ["All Products", "Featured", "New Arrivals", "Best Sellers"],
-  },
-  {
-    title: "About",
-    links: ["Our Story", "Artisans", "Sustainability", "Blog"],
-  },
-  {
-    title: "Support",
-    links: ["FAQ", "Shipping", "Returns", "Contact"],
-  },
-  {
-    title: "Legal",
-    links: ["Privacy Policy", "Terms of Service", "Cookie Policy"],
-  },
-];
+const footerLinks = {
+  shop: [
+    { name: "Collections", href: "/collections" },
+    { name: "Best Sellers", href: "/404" },
+    { name: "New Arrivals", href: "/404" },
+    { name: "Sustainability", href: "/sustainability" },
+  ],
+  about: [
+    { name: "Our Story", href: "/about" },
+    { name: "Artisans", href: "/404" },
+    { name: "Blog", href: "/blog" },
+    { name: "FAQ", href: "/faq" },
+  ],
+  support: [
+    { name: "Shipping & Returns", href: "/shipping" },
+    { name: "Privacy Policy", href: "/privacy" },
+    { name: "Terms of Service", href: "/terms" },
+    { name: "Cookie Policy", href: "/404" },
+  ],
+};
 
-export function Footer() {
+export default function Footer() {
   return (
     <footer className="bg-white border-t border-neutral-200">
       <div className="max-w-7xl mx-auto px-6 py-20">
@@ -65,19 +67,19 @@ export function Footer() {
           </div>
 
           {/* Links Sections */}
-          {footerLinks.map((section) => (
-            <div key={section.title} className="lg:col-span-2">
-              <h3 className="font-medium text-neutral-800 mb-4">
-                {section.title}
+          {Object.entries(footerLinks).map(([title, links]) => (
+            <div key={title} className="lg:col-span-2">
+              <h3 className="font-medium text-neutral-800 mb-4 capitalize">
+                {title}
               </h3>
               <ul className="space-y-3">
-                {section.links.map((link) => (
-                  <li key={link}>
+                {links.map((link) => (
+                  <li key={link.name}>
                     <Link
-                      href="#"
-                      className="text-neutral-600 hover:text-[#8B7355] transition-colors"
+                      href={link.href}
+                      className="text-sm text-neutral-600 hover:text-neutral-800 transition-colors"
                     >
-                      {link}
+                      {link.name}
                     </Link>
                   </li>
                 ))}
@@ -97,7 +99,9 @@ export function Footer() {
               Terms
             </Link>
           </div>
-          <p>© 2024 Maison. All rights reserved.</p>
+          <p className="text-sm text-neutral-600">
+            © {new Date().getFullYear()} Maison. All rights reserved.
+          </p>
           <div className="flex items-center gap-2">
             <span>Template Built with ❤️ by</span>
             <Link
