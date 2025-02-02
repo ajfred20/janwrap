@@ -7,30 +7,52 @@ const featuredProducts = [
   {
     name: "Leather Accent Chair",
     price: "$299",
-    image: "/products/chair.jpg",
+    image:
+      "https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=800&q=80",
     category: "Furniture",
   },
   {
     name: "Ceramic Vase Set",
     price: "$89",
-    image: "/products/vase.jpg",
+    image:
+      "https://images.unsplash.com/photo-1602872030219-ad2b9a54315c?auto=format&fit=crop&w=800&q=80",
     category: "Decor",
   },
-  // Add more products
+  {
+    name: "Wooden Coffee Table",
+    price: "$499",
+    image:
+      "https://images.unsplash.com/photo-1532372320978-9b6d003b5b4d?auto=format&fit=crop&w=800&q=80",
+    category: "Furniture",
+  },
+  {
+    name: "Linen Throw Pillow",
+    price: "$45",
+    image:
+      "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=800&q=80",
+    category: "Textiles",
+  },
 ];
 
 const categories = [
   {
     name: "Furniture",
-    image: "/categories/furniture.jpg",
+    image:
+      "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?auto=format&fit=crop&w=800&q=80",
     count: "124 items",
   },
   {
     name: "Decor",
-    image: "/categories/decor.jpg",
+    image:
+      "https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&w=800&q=80",
     count: "86 items",
   },
-  // Add more categories
+  {
+    name: "Lighting",
+    image:
+      "https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?auto=format&fit=crop&w=800&q=80",
+    count: "53 items",
+  },
 ];
 
 export default function Home() {
@@ -56,7 +78,7 @@ export default function Home() {
 
             <div className="relative aspect-square rounded-2xl overflow-hidden">
               <Image
-                src="/hero-image.jpg"
+                src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1200&q=80"
                 alt="Featured collection"
                 fill
                 className="object-cover"
@@ -138,7 +160,7 @@ export default function Home() {
           <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
             <div className="relative aspect-[4/3] rounded-2xl overflow-hidden order-2 lg:order-1">
               <Image
-                src="/design-philosophy.jpg"
+                src="https://images.unsplash.com/photo-1631679706909-1844bbd07221?auto=format&fit=crop&w=1200&q=80"
                 alt="Our design philosophy"
                 fill
                 className="object-cover"
@@ -170,20 +192,28 @@ export default function Home() {
             @maison on Instagram
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
-            {Array.from({ length: 4 }).map((_, i) => (
-              <div
-                key={i}
-                className="relative aspect-square rounded-xl overflow-hidden group cursor-pointer"
-              >
-                <Image
-                  src={`/instagram/${i + 1}.jpg`}
-                  alt={`Instagram post ${i + 1}`}
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors" />
-              </div>
-            ))}
+            {Array.from({ length: 4 }).map((_, i) => {
+              const images = [
+                "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80",
+                "https://images.unsplash.com/photo-1594026112284-02bb6f3352fe?auto=format&fit=crop&w=800&q=80",
+                "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=format&fit=crop&w=800&q=80",
+                "https://images.unsplash.com/photo-1616137466211-f939a420be84?auto=format&fit=crop&w=800&q=80",
+              ];
+              return (
+                <div
+                  key={i}
+                  className="relative aspect-square rounded-xl overflow-hidden group cursor-pointer"
+                >
+                  <Image
+                    src={images[i]}
+                    alt={`Instagram post ${i + 1}`}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors" />
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
