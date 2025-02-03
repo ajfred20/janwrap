@@ -1,11 +1,13 @@
 "use client";
 import Link from "next/link";
+import { SignInButton, SignUpButton, UserButton, useUser } from "@clerk/nextjs";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { SearchDialog } from "@/components/search-dialog";
 
 export function Navigation() {
   const pathname = usePathname();
+  const { isSignedIn } = useUser();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
@@ -93,21 +95,30 @@ export function Navigation() {
                 />
               </svg>
             </Link>
-            {/* Desktop Auth Links */}
-            <div className="hidden md:flex items-center gap-4">
-              <Link
-                href="/login"
-                className="text-neutral-600 hover:text-[#8B7355] transition-colors"
-              >
-                Sign In
-              </Link>
-              <Link
-                href="/signup"
-                className="bg-[#8B7355] text-white px-4 py-2 rounded-full hover:bg-[#7A6548] transition-colors"
-              >
-                Sign Up
-              </Link>
-            </div>
+
+            {!isSignedIn ? (
+              <>
+                <SignInButton mode="modal">
+                  <span className="hidden md:inline text-neutral-600 hover:text-[#8B7355] transition-colors">
+                    Login
+                  </span>
+                </SignInButton>
+                <SignUpButton mode="modal">
+                  <button className="hidden md:block bg-[#8B7355] text-white px-4 py-2 rounded-full text-sm hover:bg-[#7A6548] transition-colors">
+                    Sign Up
+                  </button>
+                </SignUpButton>
+              </>
+            ) : (
+              <UserButton
+                appearance={{
+                  elements: {
+                    avatarBox: "w-8 h-8",
+                  },
+                }}
+              />
+            )}
+
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="md:hidden text-neutral-600 hover:text-[#8B7355] transition-colors"
@@ -168,21 +179,20 @@ export function Navigation() {
             >
               Contact
             </Link>
-            {/* Mobile Auth Links */}
-            <div className="pt-4 border-t border-neutral-200 space-y-4">
-              <Link
-                href="/login"
-                className="block text-neutral-600 hover:text-[#8B7355] transition-colors"
-              >
-                Sign In
-              </Link>
-              <Link
-                href="/signup"
-                className="block bg-[#8B7355] text-white px-4 py-2 rounded-full hover:bg-[#7A6548] transition-colors text-center"
-              >
-                Sign Up
-              </Link>
-            </div>
+            {!isSignedIn && (
+              <div className="pt-4 border-t border-neutral-200 space-y-4">
+                <SignInButton mode="modal">
+                  <span className="block text-neutral-600 hover:text-[#8B7355] transition-colors">
+                    Login
+                  </span>
+                </SignInButton>
+                <SignUpButton mode="modal">
+                  <button className="w-full bg-[#8B7355] text-white px-4 py-2 rounded-full text-sm hover:bg-[#7A6548] transition-colors">
+                    Sign Up
+                  </button>
+                </SignUpButton>
+              </div>
+            )}
           </div>
         )}
 
