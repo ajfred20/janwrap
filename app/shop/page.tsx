@@ -21,197 +21,11 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { useCart } from "@/contexts/cart-context";
-
-const products = [
-  {
-    name: "Leather Accent Chair",
-    price: 299,
-    image:
-      "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?auto=format&fit=crop&w=800&q=80",
-    category: "Furniture",
-    isNew: true,
-    rating: 4.8,
-    reviews: 124,
-  },
-  {
-    name: "Ceramic Vase Set",
-    price: 89,
-    image:
-      "https://images.unsplash.com/photo-1578500494198-246f612d3b3d?auto=format&fit=crop&w=800&q=80",
-    category: "Decor",
-    isNew: false,
-    rating: 4.5,
-    reviews: 89,
-  },
-  {
-    name: "Modern Coffee Table",
-    price: 449,
-    image:
-      "https://images.unsplash.com/photo-1533090481720-856c6e3c1fdc?auto=format&fit=crop&w=800&q=80",
-    category: "Furniture",
-    isNew: false,
-    rating: 4.7,
-    reviews: 156,
-  },
-  {
-    name: "Linen Throw Pillow",
-    price: 45,
-    image:
-      "https://images.unsplash.com/photo-1579656381226-5fc0f0100c3b?auto=format&fit=crop&w=800&q=80",
-    category: "Textiles",
-    isNew: true,
-    rating: 4.3,
-    reviews: 67,
-  },
-  {
-    name: "Pendant Light Fixture",
-    price: 189,
-    image:
-      "https://images.unsplash.com/photo-1524484485831-a92ffc0de03f?auto=format&fit=crop&w=800&q=80",
-    category: "Lighting",
-    isNew: false,
-    rating: 4.6,
-    reviews: 94,
-  },
-  {
-    name: "Woven Area Rug",
-    price: 299,
-    image:
-      "https://images.unsplash.com/photo-1575414003591-ece8d0416c7a?auto=format&fit=crop&w=800&q=80",
-    category: "Textiles",
-    isNew: false,
-    rating: 4.4,
-    reviews: 112,
-  },
-  {
-    name: "Marble Side Table",
-    price: 249,
-    image:
-      "https://images.unsplash.com/photo-1499933374294-4584851497cc?auto=format&fit=crop&w=800&q=80",
-    category: "Furniture",
-    isNew: true,
-    rating: 4.9,
-    reviews: 78,
-  },
-  {
-    name: "Wall Mirror Set",
-    price: 159,
-    image:
-      "https://images.unsplash.com/photo-1622398925373-3f91b1e275f5?auto=format&fit=crop&w=800&q=80",
-    category: "Decor",
-    isNew: false,
-    rating: 4.7,
-    reviews: 143,
-  },
-  {
-    name: "Velvet Dining Chair",
-    price: 279,
-    image:
-      "https://images.unsplash.com/photo-1592078615290-033ee584e267?auto=format&fit=crop&w=800&q=80",
-    category: "Furniture",
-    isNew: false,
-    rating: 4.6,
-    reviews: 98,
-  },
-  {
-    name: "Brass Floor Lamp",
-    price: 229,
-    image:
-      "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=800&q=80",
-    category: "Lighting",
-    isNew: true,
-    rating: 4.8,
-    reviews: 67,
-  },
-  {
-    name: "Woven Basket Set",
-    price: 79,
-    image:
-      "https://images.unsplash.com/photo-1622153093514-4dd0078ac132?q=80&w=2067&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    category: "Decor",
-    isNew: false,
-    rating: 4.4,
-    reviews: 45,
-  },
-  {
-    name: "Teak Wood Shelf",
-    price: 199,
-    image:
-      "https://images.unsplash.com/photo-1593085260707-5377ba37f868?auto=format&fit=crop&w=800&q=80",
-    category: "Furniture",
-    isNew: false,
-    rating: 4.7,
-    reviews: 89,
-  },
-  {
-    name: "Macrame Wall Hanging",
-    price: 69,
-    image:
-      "https://images.unsplash.com/photo-1522758971460-1d21eed7dc1d?auto=format&fit=crop&w=800&q=80",
-    category: "Decor",
-    isNew: true,
-    rating: 4.5,
-    reviews: 56,
-  },
-  {
-    name: "Linen Bedding Set",
-    price: 249,
-    image:
-      "https://images.unsplash.com/photo-1629140727571-9b5c6f6267b4?auto=format&fit=crop&w=800&q=80",
-    category: "Textiles",
-    isNew: false,
-    rating: 4.9,
-    reviews: 178,
-  },
-  {
-    name: "Concrete Planter",
-    price: 45,
-    image:
-      "https://images.unsplash.com/photo-1485955900006-10f4d324d411?auto=format&fit=crop&w=800&q=80",
-    category: "Decor",
-    isNew: false,
-    rating: 4.3,
-    reviews: 34,
-  },
-  {
-    name: "Rattan Armchair",
-    price: 399,
-    image:
-      "https://images.unsplash.com/photo-1580480055273-228ff5388ef8?auto=format&fit=crop&w=800&q=80",
-    category: "Furniture",
-    isNew: true,
-    rating: 4.8,
-    reviews: 145,
-  },
-  {
-    name: "Glass Pendant Light",
-    price: 159,
-    image:
-      "https://images.unsplash.com/photo-1565814329452-e1efa11c5b89?auto=format&fit=crop&w=800&q=80",
-    category: "Lighting",
-    isNew: false,
-    rating: 4.6,
-    reviews: 87,
-  },
-  {
-    name: "Wool Throw Blanket",
-    price: 129,
-    image:
-      "https://images.unsplash.com/photo-1581783342308-f792dbdd27c5?auto=format&fit=crop&w=800&q=80",
-    category: "Textiles",
-    isNew: false,
-    rating: 4.7,
-    reviews: 93,
-  },
-];
+import Link from "next/link";
+import { products } from "@/data/products";
 
 const categories = ["All", "Furniture", "Decor", "Lighting", "Textiles"];
-const sortOptions = [
-  "Featured",
-  "Price: Low to High",
-  "Price: High to Low",
-  "Most Popular",
-];
+const sortOptions = ["Featured", "Price: Low to High", "Price: High to Low"];
 
 export default function Shop() {
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -256,9 +70,6 @@ export default function Shop() {
         break;
       case "Price: High to Low":
         filtered.sort((a, b) => b.price - a.price);
-        break;
-      case "Most Popular":
-        filtered.sort((a, b) => b.reviews - a.reviews);
         break;
       default:
         // Featured - no specific sorting
@@ -408,67 +219,24 @@ export default function Shop() {
         {/* Products Grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8 pb-20">
           {filteredAndSortedProducts.map((product) => (
-            <div key={product.name} className="group">
-              <div className="relative aspect-square rounded-xl overflow-hidden mb-4">
+            <Link
+              key={product.id}
+              href={`/shop/${product.slug}`}
+              className="group"
+            >
+              <div className="relative aspect-square mb-4">
                 <Image
                   src={product.image}
                   alt={product.name}
                   fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="object-cover rounded-lg group-hover:opacity-90 transition-opacity"
                 />
-                {product.isNew && (
-                  <div className="absolute top-4 left-4 bg-[#8B7355] text-white text-xs px-3 py-1 rounded-full">
-                    New
-                  </div>
-                )}
-                <button
-                  onClick={() => handleAddToCart(product)}
-                  className="absolute bottom-4 left-4 w-10 h-10 rounded-full bg-white/90 text-neutral-600 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-[#8B7355] hover:text-white"
-                >
-                  <svg
-                    className="w-5 h-5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={1.5}
-                      d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-                    />
-                  </svg>
-                </button>
               </div>
-              <div className="space-y-1">
-                <p className="text-neutral-500 text-sm">{product.category}</p>
-                <h3 className="text-neutral-800 font-medium group-hover:text-[#8B7355] transition-colors">
-                  {product.name}
-                </h3>
-                <div className="flex items-center gap-2">
-                  <div className="flex items-center">
-                    {Array.from({ length: 5 }).map((_, i) => (
-                      <svg
-                        key={i}
-                        className={`w-4 h-4 ${
-                          i < Math.floor(product.rating)
-                            ? "text-[#8B7355]"
-                            : "text-neutral-200"
-                        }`}
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                      >
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                      </svg>
-                    ))}
-                  </div>
-                  <span className="text-sm text-neutral-500">
-                    ({product.reviews})
-                  </span>
-                </div>
-                <p className="text-[#8B7355] font-medium">${product.price}</p>
-              </div>
-            </div>
+              <h3 className="text-lg font-medium text-neutral-800">
+                {product.name}
+              </h3>
+              <p className="text-[#8B7355]">${product.price}</p>
+            </Link>
           ))}
         </div>
       </div>
