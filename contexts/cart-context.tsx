@@ -1,40 +1,55 @@
 "use client";
 
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
 
-type CartItem = {
+interface CartItem {
   name: string;
   price: number;
-  quantity: number;
   image: string;
   category: string;
-};
+  quantity: number;
+  variation?: string;
+}
 
 type CartContextType = {
   items: CartItem[];
-  addItem: (item: Omit<CartItem, "quantity">) => void;
+  addItem: (item: CartItem) => void;
   removeItem: (name: string) => void;
   updateQuantity: (name: string, quantity: number) => void;
+  clearCart: () => void;
 };
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
-export function CartProvider({ children }: { children: React.ReactNode }) {
-  const [items, setItems] = useState<CartItem[]>([]);
+// Load cart from localStorage
+const loadCart = (): CartItem[] => {
+  if (typeof window === "undefined") return [];
+  const saved = localStorage.getItem("cart");
+  return saved ? JSON.parse(saved) : [];
+};
 
-  const addItem = (newItem: Omit<CartItem, "quantity">) => {
+export function CartProvider({ children }: { children: React.ReactNode }) {
+  const [items, setItems] = useState<CartItem[]>(loadCart);
+
+  // Save cart to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(items));
+  }, [items]);
+
+  const addItem = (newItem: CartItem) => {
     setItems((currentItems) => {
-      const existingItem = currentItems.find(
-        (item) => item.name === newItem.name
+      const existingItemIndex = currentItems.findIndex(
+        (item) =>
+          item.name === newItem.name && item.variation === newItem.variation
       );
-      if (existingItem) {
-        return currentItems.map((item) =>
-          item.name === newItem.name
-            ? { ...item, quantity: item.quantity + 1 }
-            : item
-        );
+
+      if (existingItemIndex > -1) {
+        const updatedItems = [...currentItems];
+        updatedItems[existingItemIndex].quantity += newItem.quantity;
+        return updatedItems;
       }
-      return [...currentItems, { ...newItem, quantity: 1 }];
+
+      return [...currentItems, newItem];
     });
   };
 
@@ -52,9 +67,13 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     );
   };
 
+  const clearCart = () => {
+    setItems([]);
+  };
+
   return (
     <CartContext.Provider
-      value={{ items, addItem, removeItem, updateQuantity }}
+      value={{ items, addItem, removeItem, updateQuantity, clearCart }}
     >
       {children}
     </CartContext.Provider>

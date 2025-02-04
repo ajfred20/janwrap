@@ -95,6 +95,7 @@ export default function Shop() {
       price: product.price,
       image: product.image,
       category: product.category,
+      quantity: 1,
     });
     toast.success("Added to cart");
 
