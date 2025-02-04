@@ -211,4 +211,214 @@ export const products = [
       "Coffee table alternative",
     ],
   },
+  {
+    id: 11,
+    name: "Rattan Accent Chair",
+    slug: "rattan-accent-chair",
+    price: 349,
+    image:
+      "https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=800",
+    category: "Furniture",
+    description:
+      "Handwoven rattan chair with comfortable cushioning. Perfect blend of natural materials and modern comfort.",
+    variations: {
+      name: "Cushion Color",
+      options: ["Natural", "Charcoal", "Ivory", "Sage"],
+    },
+    useCases: [
+      "Reading nook",
+      "Living room accent",
+      "Sunroom seating",
+      "Bedroom corner piece",
+    ],
+  },
+  {
+    id: 12,
+    name: "Marble Side Table",
+    slug: "marble-side-table",
+    price: 279,
+    image:
+      "https://images.unsplash.com/photo-1634712282287-14ed57b9cc89?auto=format&fit=crop&w=800",
+    category: "Furniture",
+    description:
+      "Elegant side table with genuine marble top and brass-finished steel base. A perfect blend of luxury and minimalism.",
+    variations: {
+      name: "Marble Type",
+      options: ["White Carrara", "Black Marquina", "Green Verde", "Rose Pink"],
+    },
+    useCases: [
+      "Bedside table",
+      "Living room accent",
+      "Entryway table",
+      "Lamp stand",
+    ],
+  },
+  {
+    id: 13,
+    name: "Handwoven Wall Tapestry",
+    slug: "wall-tapestry",
+    price: 189,
+    image:
+      "https://images.unsplash.com/photo-1615529610458-1801f844d377?auto=format&fit=crop&w=800",
+    category: "Decor",
+    description:
+      "Artisanal wall tapestry handwoven from natural fibers. Each piece tells a unique story through texture and pattern.",
+    variations: {
+      name: "Design",
+      options: ["Abstract", "Geometric", "Botanical", "Minimalist"],
+    },
+    useCases: [
+      "Wall art",
+      "Sound dampening",
+      "Room focal point",
+      "Textile art display",
+    ],
+  },
+  {
+    id: 14,
+    name: "Ceramic Table Lamp",
+    slug: "ceramic-table-lamp",
+    price: 159,
+    image:
+      "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=800",
+    category: "Lighting",
+    description:
+      "Handcrafted ceramic lamp with textured finish and linen shade. Creates a warm, inviting ambiance.",
+    variations: {
+      name: "Color",
+      options: ["Ivory", "Sage Green", "Terracotta", "Ocean Blue"],
+    },
+    useCases: [
+      "Bedside lighting",
+      "Desk lamp",
+      "Accent lighting",
+      "Reading light",
+    ],
+  },
+  {
+    id: 15,
+    name: "Velvet Throw Blanket",
+    slug: "velvet-throw-blanket",
+    price: 89,
+    image:
+      "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=800",
+    category: "Textiles",
+    description:
+      "Luxuriously soft velvet throw blanket with subtle sheen. Perfect for adding warmth and texture to any space.",
+    variations: {
+      name: "Color",
+      options: ["Deep Emerald", "Dusty Rose", "Navy Blue", "Golden"],
+    },
+    useCases: [
+      "Couch accent",
+      "Bed layering",
+      "Reading nook essential",
+      "Decorative drape",
+    ],
+  },
+  {
+    id: 16,
+    name: "Brass Wall Sconce",
+    slug: "brass-wall-sconce",
+    price: 129,
+    image:
+      "https://images.unsplash.com/photo-1614607242094-b1b2cf769ff3?auto=format&fit=crop&w=800",
+    category: "Lighting",
+    description:
+      "Modern wall sconce with adjustable arm and warm brass finish. Perfect for creating focused lighting.",
+    variations: {
+      name: "Finish",
+      options: ["Brushed Brass", "Polished Brass", "Antique Brass", "Black"],
+    },
+    useCases: [
+      "Bedside lighting",
+      "Hallway illumination",
+      "Reading light",
+      "Accent lighting",
+    ],
+  },
+  {
+    id: 17,
+    name: "Macrame Plant Hanger",
+    slug: "macrame-plant-hanger",
+    price: 45,
+    image:
+      "https://images.unsplash.com/photo-1615889898166-06a8dc086d03?auto=format&fit=crop&w=800",
+    category: "Decor",
+    description:
+      "Handcrafted macrame plant hanger made from natural cotton rope. Adds bohemian charm to any space.",
+    variations: {
+      name: "Size",
+      options: ["Small", "Medium", "Large", "Extra Large"],
+    },
+    useCases: [
+      "Plant display",
+      "Boho decor",
+      "Window accent",
+      "Garden decoration",
+    ],
+  },
+  {
+    id: 18,
+    name: "Geometric Wall Mirror",
+    slug: "geometric-wall-mirror",
+    price: 199,
+    image:
+      "https://images.unsplash.com/photo-1618220048045-10a6b3cf9e43?auto=format&fit=crop&w=800",
+    category: "Decor",
+    description:
+      "Modern geometric mirror with brass frame. Creates an illusion of space while adding contemporary style.",
+    variations: {
+      name: "Shape",
+      options: ["Hexagon", "Circle", "Rectangle", "Arch"],
+    },
+    useCases: [
+      "Wall decor",
+      "Space enhancement",
+      "Light reflection",
+      "Statement piece",
+    ],
+  },
+  {
+    id: 19,
+    name: "Handmade Ceramic Plates",
+    slug: "ceramic-plates",
+    price: 149,
+    image:
+      "https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?auto=format&fit=crop&w=800",
+    category: "Decor",
+    description:
+      "Set of 4 handmade ceramic plates with organic shapes and textures. Each piece is unique and food-safe.",
+    variations: {
+      name: "Color Scheme",
+      options: ["Earth Tones", "Ocean Blues", "Desert Sand", "Forest Green"],
+    },
+    useCases: [
+      "Dining table setting",
+      "Wall display",
+      "Decorative accent",
+      "Serving plates",
+    ],
+  },
+  {
+    id: 20,
+    name: "Linen Curtains",
+    slug: "linen-curtains",
+    price: 129,
+    image:
+      "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800",
+    category: "Textiles",
+    description:
+      "Pure linen curtains with a subtle texture and natural drape. Filters light beautifully while maintaining privacy.",
+    variations: {
+      name: "Color",
+      options: ["Natural", "Off-White", "Light Gray", "Oatmeal"],
+    },
+    useCases: [
+      "Window treatment",
+      "Room divider",
+      "Light filtering",
+      "Space definition",
+    ],
+  },
 ];

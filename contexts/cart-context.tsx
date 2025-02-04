@@ -1,6 +1,12 @@
 "use client";
 
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  useCallback,
+} from "react";
 
 interface CartItem {
   name: string;
@@ -21,22 +27,22 @@ type CartContextType = {
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
-// Load cart from localStorage
-const loadCart = (): CartItem[] => {
-  if (typeof window === "undefined") return [];
-  const saved = localStorage.getItem("cart");
-  return saved ? JSON.parse(saved) : [];
-};
-
 export function CartProvider({ children }: { children: React.ReactNode }) {
-  const [items, setItems] = useState<CartItem[]>(loadCart);
+  const [items, setItems] = useState<CartItem[]>(() => {
+    // Initialize from localStorage only on client side
+    if (typeof window !== "undefined") {
+      const savedCart = localStorage.getItem("cart");
+      return savedCart ? JSON.parse(savedCart) : [];
+    }
+    return [];
+  });
 
-  // Save cart to localStorage whenever it changes
+  // Save to localStorage whenever items change
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(items));
   }, [items]);
 
-  const addItem = (newItem: CartItem) => {
+  const addItem = useCallback((newItem: CartItem) => {
     setItems((currentItems) => {
       const existingItemIndex = currentItems.findIndex(
         (item) =>
@@ -51,33 +57,38 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
       return [...currentItems, newItem];
     });
-  };
+  }, []);
 
-  const removeItem = (name: string) => {
+  const removeItem = useCallback((name: string) => {
     setItems((currentItems) =>
       currentItems.filter((item) => item.name !== name)
     );
-  };
+  }, []);
 
-  const updateQuantity = (name: string, quantity: number) => {
+  const updateQuantity = useCallback((name: string, quantity: number) => {
+    if (quantity < 1) return;
+
     setItems((currentItems) =>
       currentItems.map((item) =>
         item.name === name ? { ...item, quantity } : item
       )
     );
-  };
+  }, []);
 
-  const clearCart = () => {
+  const clearCart = useCallback(() => {
     setItems([]);
+    localStorage.removeItem("cart");
+  }, []);
+
+  const value = {
+    items,
+    addItem,
+    removeItem,
+    updateQuantity,
+    clearCart,
   };
 
-  return (
-    <CartContext.Provider
-      value={{ items, addItem, removeItem, updateQuantity, clearCart }}
-    >
-      {children}
-    </CartContext.Provider>
-  );
+  return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 }
 
 export function useCart() {

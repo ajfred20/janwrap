@@ -83,7 +83,7 @@ export default function Checkout() {
   const handleCloseDialog = () => {
     setIsOrderDialogOpen(false);
     if (orderStatus === "success") {
-      router.push("/shop"); // Or wherever you want to redirect after success
+      router.push("/success"); // Or wherever you want to redirect after success
     }
   };
 

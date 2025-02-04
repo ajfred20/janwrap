@@ -13,6 +13,7 @@ import {
   DialogTitle,
   DialogFooter,
 } from "@/components/ui/dialog";
+import Link from "next/link";
 
 export default function ProductPage({
   params,
@@ -212,12 +213,12 @@ export default function ProductPage({
             >
               Continue Shopping
             </button>
-            <button
-              onClick={() => (window.location.href = "/cart")}
-              className="flex-1 px-4 py-3 bg-[#8B7355] text-white rounded-full hover:bg-[#7A6548] transition-colors"
+            <Link
+              href="/cart"
+              className="flex-1 px-4 py-3 bg-[#8B7355] text-white rounded-full hover:bg-[#7A6548] transition-colors text-center"
             >
               View Cart
-            </button>
+            </Link>
           </DialogFooter>
         </DialogContent>
       </Dialog>
