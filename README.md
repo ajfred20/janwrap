@@ -6,7 +6,7 @@
 
 ## 🔴 Live Preview
 
-Check out the live site at [Maison](https://chimly.vercel.app)
+Check out the live site at [Maison](https://maison-aj.vercel.app)
 
 ## ✨ Features
 
@@ -26,8 +26,8 @@ After cloning the repository, navigate to the `app` folder and edit the `page.ts
 To get started, clone the repository using the following command:
 
 ```bash
-git clone https://github.com/ajfred20/chimly.git
-cd chimly
+git clone https://github.com/ajfred20/maison.git
+cd maison
 ```
 
 ### Install Dependencies
