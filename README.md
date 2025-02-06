@@ -1,12 +1,12 @@
-# Chimly - Your AI Task Manager 🤖
+# Maison - Furniture Brand E-commerce Template ⚡
 
-![Chimly Preview](https://raw.githubusercontent.com/ajfred20/chimly/main/public/assets/preview.png)
+![Maison Preview](https://raw.githubusercontent.com/ajfred20/chimly/main/public/assets/preview.png)
 
-> 🌟 A modern AI Task manager website built with Next.js 15, Tailwind CSS, and Framer Motion
+> 🌟 A modern furniture brand e-commerce website built with Next.js 15, Tailwind CSS, and Framer Motion
 
 ## 🔴 Live Preview
 
-Check out the live site at [Chimly](https://chimly.vercel.app)
+Check out the live site at [Maison](https://chimly.vercel.app)
 
 ## ✨ Features
 
