@@ -1,6 +1,6 @@
 # Maison - Furniture Brand E-commerce Template ⚡
 
-![Maison Preview](https://raw.githubusercontent.com/ajfred20/chimly/main/public/assets/preview.png)
+![Maison Preview](https://raw.githubusercontent.com/ajfred20/maison/main/public/assets/preview.png)
 
 > 🌟 A modern furniture brand e-commerce website built with Next.js 15, Tailwind CSS, and Framer Motion
 
