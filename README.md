@@ -19,7 +19,7 @@ Check out the live site at [Maison](https://maison-aj.vercel.app)
 
 ## 🚀 Getting Started
 
-After cloning the repository, navigate to the `app` folder and edit the `page.tsx` file to customize the main page. Additionally, you can modify the components found in the `components` folder to change the UI elements as needed.
+After cloning the repository, navigate to the `app` folder and edit the `page.tsx` file to customize the main page. Additionally, you can modify the files found within the folders in the `app` folder to change the UI elements and interactivity as needed.
 
 ### Clone the Repository
 
@@ -35,6 +35,8 @@ cd maison
 ```bash
 npm install
 ```
+## Fork Repo
+At the top of the repo you are provided with options to 4 options to pin, unwatch, fork and star the repo. Select the `Fork` option and follow the instructions given.
 
 ## ⭐️ Support Us
 
